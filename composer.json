@@ -27,7 +27,7 @@
     },
     "require": {
         "php": "^5.5 || ^7.0",
-        "zendframework/zend-mvc": "dev-develop as 3.0.0",
+        "zendframework/zend-mvc": "dev-develop as 3.0.0 || ^3.0",
         "zendframework/zend-session": "^2.6.2",
         "zendframework/zend-stdlib": "^2.7 || ^3.0"
     },
