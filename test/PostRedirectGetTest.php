@@ -7,18 +7,17 @@
 
 namespace ZendTest\Mvc\Plugin\Prg;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\Http\Request;
-use Zend\Http\Response;
-use Zend\Mvc\MvcEvent;
 use Zend\Mvc\ModuleRouteListener;
+use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Plugin\Prg\PostRedirectGet;
 use Zend\Router\Exception\RuntimeException;
 use Zend\Router\Http\Literal as LiteralRoute;
 use Zend\Router\Http\Segment as SegmentRoute;
+use Zend\Router\Http\TreeRouteStack;
 use Zend\Router\RouteMatch;
 use Zend\Router\SimpleRouteStack;
-use Zend\Router\Http\TreeRouteStack;
 use Zend\Stdlib\Parameters;
 
 class PostRedirectGetTest extends TestCase
@@ -28,7 +27,7 @@ class PostRedirectGetTest extends TestCase
     public $request;
     public $response;
 
-    public function setUp()
+    protected function setUp()
     {
         $router = new TreeRouteStack;
         $router->addRoute('home', LiteralRoute::factory([
@@ -153,7 +152,7 @@ class PostRedirectGetTest extends TestCase
         ]));
         $this->controller->dispatch($this->request, $this->response);
 
-        $this->setExpectedException(RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin('some/route');
     }
