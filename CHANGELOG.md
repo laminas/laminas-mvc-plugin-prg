@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.2.0 - TBD
+
+### Added
+
+- [#10](https://github.com/zendframework/zend-mvc-plugin-prg/pull/10) adds support for PHP 7.3.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- [#10](https://github.com/zendframework/zend-mvc-plugin-prg/pull/10) removes support for zend-stdlib v2 releases.
+
+### Fixed
+
+- Nothing.
+
 ## 1.1.1 - TBD
 
 ### Added
