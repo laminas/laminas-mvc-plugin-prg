@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.2.0 - TBD
+## 1.2.0 - 2019-10-19
 
 ### Added
 
@@ -19,28 +19,6 @@ All notable changes to this project will be documented in this file, in reverse 
 ### Removed
 
 - [#10](https://github.com/zendframework/zend-mvc-plugin-prg/pull/10) removes support for zend-stdlib v2 releases.
-
-### Fixed
-
-- Nothing.
-
-## 1.1.1 - TBD
-
-### Added
-
-- Nothing.
-
-### Changed
-
-- Nothing.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
 
 ### Fixed
 
