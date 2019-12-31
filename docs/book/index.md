@@ -3,14 +3,14 @@
 Install via composer:
 
 ```bash
-$ composer require zendframework/zend-mvc-plugin-prg
+$ composer require laminas/laminas-mvc-plugin-prg
 ```
 
-If you are using the [zend-component-installer](https://docs.zendframework.com/zend-component-installer/),
+If you are using the [laminas-component-installer](https://docs.laminas.dev/laminas-component-installer/),
 you're done!
 
 If not, you will need to add the component as a module to your
-application. Add the entry `'Zend\Mvc\Plugin\Prg'` to
+application. Add the entry `'Laminas\Mvc\Plugin\Prg'` to
 your list of modules in your application configuration (typically
 one of `config/application.config.php` or `config/modules.config.php`).
 
@@ -41,7 +41,7 @@ When no arguments are provided, the current matched route is used.
 // Pass in the route/url you want to redirect to after the POST
 $prg = $this->prg('/user/register', true);
 
-if ($prg instanceof \Zend\Http\PhpEnvironment\Response) {
+if ($prg instanceof \Laminas\Http\PhpEnvironment\Response) {
     // Returned a response to redirect us.
     return $prg;
 }
