@@ -1,25 +1,26 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-plugin-prg for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-plugin-prg for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-plugin-prg/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-plugin-prg/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZendTest\Mvc\Plugin\Prg;
+namespace LaminasTest\Mvc\Plugin\Prg;
 
+use Laminas\Http\Request;
+use Laminas\Http\Response;
+use Laminas\Mvc\ModuleRouteListener;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Mvc\Plugin\Prg\PostRedirectGet;
+use Laminas\Router\Exception\RuntimeException;
+use Laminas\Router\Http\Literal as LiteralRoute;
+use Laminas\Router\Http\Segment as SegmentRoute;
+use Laminas\Router\Http\TreeRouteStack;
+use Laminas\Router\RouteMatch;
+use Laminas\Router\SimpleRouteStack;
+use Laminas\Stdlib\Parameters;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Http\Request;
-use Zend\Http\Response;
-use Zend\Mvc\MvcEvent;
-use Zend\Mvc\ModuleRouteListener;
-use Zend\Mvc\Plugin\Prg\PostRedirectGet;
-use Zend\Router\Exception\RuntimeException;
-use Zend\Router\Http\Literal as LiteralRoute;
-use Zend\Router\Http\Segment as SegmentRoute;
-use Zend\Router\RouteMatch;
-use Zend\Router\SimpleRouteStack;
-use Zend\Router\Http\TreeRouteStack;
-use Zend\Stdlib\Parameters;
 
 class PostRedirectGetTest extends TestCase
 {
@@ -48,7 +49,7 @@ class PostRedirectGetTest extends TestCase
         $router->addRoute('ctl', SegmentRoute::factory([
             'route' => '/ctl/:controller',
             'defaults' => [
-                '__NAMESPACE__' => 'ZendTest\Mvc\Plugin\Prg\TestAsset',
+                '__NAMESPACE__' => 'LaminasTest\Mvc\Plugin\Prg\TestAsset',
                 'controller' => 'sample'
             ]
         ]));
@@ -87,7 +88,7 @@ class PostRedirectGetTest extends TestCase
         $plugin       = $this->plugin;
         $prgResultUrl = $plugin('/test/getPage', true);
 
-        $this->assertInstanceOf('Zend\Http\Response', $prgResultUrl);
+        $this->assertInstanceOf('Laminas\Http\Response', $prgResultUrl);
         $this->assertTrue($prgResultUrl->getHeaders()->has('Location'));
         $this->assertEquals('/test/getPage', $prgResultUrl->getHeaders()->get('Location')->getUri());
         $this->assertEquals(303, $prgResultUrl->getStatusCode());
@@ -104,7 +105,7 @@ class PostRedirectGetTest extends TestCase
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin('home');
 
-        $this->assertInstanceOf('Zend\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals('/', $prgResultRoute->getHeaders()->get('Location')->getUri());
         $this->assertEquals(303, $prgResultRoute->getStatusCode());
@@ -122,7 +123,7 @@ class PostRedirectGetTest extends TestCase
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin('home');
 
-        $this->assertInstanceOf('Zend\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals('/', $prgResultRoute->getHeaders()->get('Location')->getUri());
         $this->assertEquals(303, $prgResultRoute->getStatusCode());
@@ -171,7 +172,7 @@ class PostRedirectGetTest extends TestCase
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin();
 
-        $this->assertInstanceOf('Zend\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals('/', $prgResultRoute->getHeaders()->get('Location')->getUri());
         $this->assertEquals(303, $prgResultRoute->getStatusCode());
@@ -190,7 +191,7 @@ class PostRedirectGetTest extends TestCase
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin();
 
-        $this->assertInstanceOf('Zend\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals('/foo/1', $prgResultRoute->getHeaders()->get('Location')->getUri());
         $this->assertEquals(303, $prgResultRoute->getStatusCode());
@@ -216,7 +217,7 @@ class PostRedirectGetTest extends TestCase
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin();
 
-        $this->assertInstanceOf('Zend\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals(
             $expects,
@@ -246,7 +247,7 @@ class PostRedirectGetTest extends TestCase
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin();
 
-        $this->assertInstanceOf('Zend\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals(
             $expects . '?id=123',
