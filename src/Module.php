@@ -1,13 +1,14 @@
 <?php
+
 /**
- * @link      http://github.com/zendframework/zend-mvc-plugin-prg for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/laminas/laminas-mvc-plugin-prg for the canonical source repository
+ * @copyright https://github.com/laminas/laminas-mvc-plugin-prg/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas/laminas-mvc-plugin-prg/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Mvc\Plugin\Prg;
+namespace Laminas\Mvc\Plugin\Prg;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 class Module
 {
@@ -27,7 +28,11 @@ class Module
                     'PostRedirectGet' => PostRedirectGet::class,
                     'postRedirectGet' => PostRedirectGet::class,
                     'postredirectget' => PostRedirectGet::class,
-                    'Zend\Mvc\Controller\Plugin\PostRedirectGet' => PostRedirectGet::class,
+                    'Laminas\Mvc\Controller\Plugin\PostRedirectGet' => PostRedirectGet::class,
+
+                    // Legacy Zend Framework aliases
+                    'Zend\Mvc\Controller\Plugin\PostRedirectGet' => 'Laminas\Mvc\Controller\Plugin\PostRedirectGet',
+                    \Zend\Mvc\Plugin\Prg\PostRedirectGet::class => PostRedirectGet::class,
                 ],
                 'factories' => [
                     PostRedirectGet::class => InvokableFactory::class,

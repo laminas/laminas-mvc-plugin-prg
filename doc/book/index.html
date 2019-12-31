@@ -1,10 +1,10 @@
 <div class="container">
   <div class="jumbotron">
-    <h1>zend-mvc-plugin-prg</h1>
+    <h1>laminas-mvc-plugin-prg</h1>
     
-    <p>Post/Redirect/Get plugin for zend-mvc controllers.</p>
+    <p>Post/Redirect/Get plugin for laminas-mvc controllers.</p>
 
-    <pre><code class="language-bash">$ composer require zendframework/zend-mvc-plugin-prg</code></pre>
+    <pre><code class="language-bash">$ composer require laminas/laminas-mvc-plugin-prg</code></pre>
   </div>
 </div>
 
@@ -22,17 +22,17 @@
           </p>
 
           <pre><code class="lang-bash" data-trim>
-$ composer require zendframework/zend-mvc-plugin-prg
+$ composer require laminas/laminas-mvc-plugin-prg
           </code></pre>
 
           <p>
-            If you are using the <a href="https://zendframework.github.io/zend-component-installer">zend-component-installer</a>,
+            If you are using the <a href="https://docs.laminas.dev/laminas-component-installer">laminas-component-installer</a>,
             you're done!
           </p>
 
           <p>
             If not, you will need to add the component as a module to your
-            application. Add the entry <code>'Zend\Mvc\Plugin\Prg'</code> to
+            application. Add the entry <code>'Laminas\Mvc\Plugin\Prg'</code> to
             your list of modules in your application configuration (typically
             one of <code>config/application.config.php</code> or
             <code>config/modules.config.php</code>).
@@ -72,7 +72,7 @@ $ composer require zendframework/zend-mvc-plugin-prg
 // Pass in the route/url you want to redirect to after the POST
 $prg = $this->prg('/user/register', true);
 
-if ($prg instanceof \Zend\Http\PhpEnvironment\Response) {
+if ($prg instanceof \Laminas\Http\PhpEnvironment\Response) {
     // Returned a response to redirect us.
     return $prg;
 }
