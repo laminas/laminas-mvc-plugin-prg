@@ -1,9 +1,11 @@
 docs_dir: docs/book
 site_dir: docs/html
 nav:
-    - Home: index.md
+    - { Home: index.md }
 site_name: laminas-mvc-plugin-prg
 site_description: 'Post/Redirect/Get plugin for laminas-mvc controllers'
 repo_url: 'https://github.com/laminas/laminas-mvc-plugin-prg'
 extra:
     show_special_homepage: true
+    project: Mvc
+    project_url: 'https://docs.laminas.dev'
