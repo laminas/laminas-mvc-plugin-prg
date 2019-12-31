@@ -1,8 +1,7 @@
 docs_dir: docs/book
 site_dir: docs/html
-pages:
+nav:
     - index.md
-site_name: zend-mvc-plugin-prg
-site_description: 'zend-mvc-plugin-prg: Post-Redirect-Get controller plugin for zend-mvc'
-repo_url: 'https://github.com/zendframework/zend-mvc-plugin-prg'
-copyright: 'Copyright (c) 2005-2018 <a href="https://www.zend.com/">Zend Technologies USA Inc.</a>'
+site_name: laminas-mvc-plugin-prg
+site_description: 'laminas-mvc-plugin-prg: Post-Redirect-Get controller plugin for laminas-mvc'
+repo_url: 'https://github.com/laminas/laminas-mvc-plugin-prg'
