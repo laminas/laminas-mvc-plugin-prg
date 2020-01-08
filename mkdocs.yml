@@ -7,5 +7,4 @@ site_description: 'Post/Redirect/Get plugin for laminas-mvc controllers'
 repo_url: 'https://github.com/laminas/laminas-mvc-plugin-prg'
 extra:
     project: Mvc
-    project_url: 'https://docs.laminas.dev'
     show_special_homepage: true
