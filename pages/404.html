@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Post/Redirect/Get plugin for laminas-mvc controllers">  
-    <link rel="canonical" href="https://docs.laminas.dev/">
     <link rel="shortcut icon" href="/img/trademark-laminas-foundation-rgb.svg">
 
     <title>laminas-mvc-plugin-prg - Laminas Docs</title>
@@ -20,7 +19,7 @@
     <div class="container">
         
         <a class="logo-link navbar-brand offset-md-2" href="https://getlaminas.org/" data-tooltip data-placement="bottom" title="Go to the Laminas homepage">
-            <img src="img/laminas-foundation-white.svg" height="28" alt="Laminas">
+            <img src="../img/laminas-foundation-white.svg" height="28" alt="Laminas">
         </a>
         <a class="navbar-title" href="https://docs.laminas.dev/" data-tooltip data-placement="bottom" title="Go to the Laminas Documentation">
             Documentation
@@ -113,116 +112,21 @@
         <div class="row">
             <div class="col-md-2 col-sm-12">
                 
-    
-
-    
-    
-
-    
-
-    
-    
-
             </div>
             <div class="col-md-7 col-sm-12 content" role="main" data-spy="scroll" data-target=".toc">
                 
-                    <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        
-            <li class="breadcrumb-item"><a href="">Overview</a></li>
 
-            
-                <li class="breadcrumb-item">laminas-mvc-plugin-prg</li>
-            
-        
-    </ol>
-</nav>
+<h1 class="content__title">404</h1>
+<blockquote>
+    <h3>Something went wrong!</h3>
+    <p>
+        We're sorry, but the page you are looking for does not exist.
+    </p>
+</blockquote>
 
+<a href="../." class="btn btn-default" role="button">Go to homepage</a>
 
 
-
-
-    <h1>laminas-mvc-plugin-prg</h1>
-<p>Post/Redirect/Get plugin for laminas-mvc controllers</p>
-
-
-    <h2 id="installation">Installation</h2>
-<p>Install via composer:</p>
-<pre class=codehilite><code class=language-bash>$ composer require laminas/laminas-mvc-plugin-prg</code></pre>
-<p>If you are using the <a href="https://docs.laminas.dev/laminas-component-installer/">laminas-component-installer</a>,
-you're done!</p>
-<p>If not, you will need to add the component as a module to your
-application. Add the entry <code>'Laminas\Mvc\Plugin\Prg'</code> to
-your list of modules in your application configuration (typically
-one of <code>config/application.config.php</code> or <code>config/modules.config.php</code>).</p>
-<h2 id="usage">Usage</h2>
-<p>When a user sends a POST request (e.g. after submitting a form), their
-browser will try to protect them from sending the POST again, breaking
-the back button, causing browser warnings and pop-ups, and sometimes
-reposting the form. Instead, when receiving a POST, we should store the
-data in a session container and redirect the user to a GET request.</p>
-<p>This plugin can be invoked with two arguments:</p>
-<ul>
-<li>
-<p><code>$redirect</code>, a string containing the redirect location,
-  which can either be a named route or a URL, based on the contents of
-  the second parameter.</p>
-</li>
-<li>
-<p><code>$redirectToUrl</code>, a boolean that when set to
-  <code>true</code>, causes the first parameter to be treated as a URL
-  instead of a route name (this is required when redirecting to a URL
-  instead of a route). This argument defaults to <code>false</code>.</p>
-</li>
-</ul>
-<p>When no arguments are provided, the current matched route is used.</p>
-<h3>Example Usage</h3>
-<pre class=codehilite><code class=language-php>// Pass in the route/url you want to redirect to after the POST
-$prg = $this-&gt;prg('/user/register', true);
-
-if ($prg instanceof \Laminas\Http\PhpEnvironment\Response) {
-    // Returned a response to redirect us.
-    return $prg;
-}
-
-if ($prg === false) {
-    // This wasn't a POST request, but there were no params in the flash
-    // messenger; this is probably the first time the form was loaded.
-    return ['form' =&gt; $myForm];
-}
-
-// $prg is an array containing the POST params from the previous request
-$form-&gt;setData($prg);
-
-// ... your form processing code here</code></pre>
-
-    
-
-
-<h2>Support</h2>
-<ul>
-    <li>Issues: <a href="https://github.com/laminas/laminas-mvc-plugin-prg/issues">github.com/laminas/laminas-mvc-plugin-prg/issues</a></li>
-    <li>Source: <a href="https://github.com/laminas/laminas-mvc-plugin-prg/">github.com/laminas/laminas-mvc-plugin-prg/</a></li>
-    <li>Chat: <a href="https://laminas.dev/chat">laminas.dev/chat</a></li>
-    <li>Forum: <a href="https://discourse.laminas.dev/">discourse.laminas.dev</a></li>
-</ul>
-
-
-
-
-
-
-
-    <div class="help-wanted">
-        <p>
-            Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/laminas/laminas-mvc-plugin-prg/edit/master/docs/book/index.md" target="_blank" class="help-wanted__link">
-                Edit this page on GitHub!
-            </a>
-        </p>
-    </div>
-
-                
             </div>
             <div class="col-md-3 col-sm-12 sidebar">
                 
@@ -313,12 +217,12 @@ $form-&gt;setData($prg);
 </footer>
 
     <script>
-        let base_url = '.',
+        let base_url = '..',
             project  = "mvc",
             siteName = 'laminas-mvc-plugin-prg';
     </script>
     <script src="/js/scripts.js"></script>
-        <script src="search/main.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -346,8 +250,3 @@ $form-&gt;setData($prg);
 
 
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2020-01-08 12:30:25
--->
