@@ -59,6 +59,6 @@
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
     },
     "replace": {
-        "zendframework/zend-mvc-plugin-prg": "self.version"
+        "zendframework/zend-mvc-plugin-prg": "^1.2.0"
     }
 }
