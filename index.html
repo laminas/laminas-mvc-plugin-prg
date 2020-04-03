@@ -207,7 +207,8 @@
 
     <h2 id="installation">Installation</h2>
 <p>Install via composer:</p>
-<pre class=codehilite><code class=language-bash>$ composer require laminas/laminas-mvc-plugin-prg</code></pre>
+<pre class="highlight"><code class="language-bash">$ composer require laminas/laminas-mvc-plugin-prg</code></pre>
+
 <p>If you are using the <a href="https://docs.laminas.dev/laminas-component-installer/">laminas-component-installer</a>,
 you're done!</p>
 <p>If not, you will need to add the component as a module to your
@@ -236,7 +237,7 @@ data in a session container and redirect the user to a GET request.</p>
 </ul>
 <p>When no arguments are provided, the current matched route is used.</p>
 <h3>Example Usage</h3>
-<pre class=codehilite><code class=language-php>// Pass in the route/url you want to redirect to after the POST
+<pre class="highlight"><code class="language-php">// Pass in the route/url you want to redirect to after the POST
 $prg = $this-&gt;prg('/user/register', true);
 
 if ($prg instanceof \Laminas\Http\PhpEnvironment\Response) {
@@ -414,5 +415,5 @@ $form-&gt;setData($prg);
 
 <!--
 MkDocs version : 1.1
-Build Date UTC : 2020-03-29 11:26:56
+Build Date UTC : 2020-04-03 18:19:10
 -->
