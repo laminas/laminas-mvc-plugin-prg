@@ -72,7 +72,7 @@ class PostRedirectGet extends AbstractPlugin
         $controller = $this->getController();
         $request    = $controller->getRequest();
     
-        return md5($request->getRequestUri());
+        return md5($request->getUri());
     }
 
     /**
