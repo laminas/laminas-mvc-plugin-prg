@@ -64,14 +64,14 @@ class PostRedirectGet extends AbstractPlugin
     }
 
     /**
-     * 
+     *
      * @return string
      */
-    public function getContainerIdentifier(){
-        
+    public function getContainerIdentifier()
+    {
         $controller = $this->getController();
         $request    = $controller->getRequest();
-    
+
         return md5($request->getUri());
     }
 
