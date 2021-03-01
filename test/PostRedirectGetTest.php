@@ -28,7 +28,7 @@ class PostRedirectGetTest extends TestCase
     public $request;
     public $response;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $router = new TreeRouteStack;
         $router->addRoute('home', LiteralRoute::factory([
