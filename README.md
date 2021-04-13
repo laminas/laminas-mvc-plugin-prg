@@ -1,7 +1,6 @@
 # laminas-mvc-plugin-prg
 
-[![Build Status](https://travis-ci.com/laminas/laminas-mvc-plugin-prg.svg?branch=master)](https://travis-ci.com/laminas/laminas-mvc-plugin-prg)
-[![Coverage Status](https://coveralls.io/repos/github/laminas/laminas-mvc-plugin-prg/badge.svg?branch=master)](https://coveralls.io/github/laminas/laminas-mvc-plugin-prg?branch=master)
+[![Build Status](https://github.com/laminas/laminas-mvc-plugin-prg/workflows/Continuous%20Integration/badge.svg)](https://github.com/laminas/laminas-mvc-plugin-prg/actions?query=workflow%3A"Continuous+Integration")
 
 Provides a [Post-Redirect-Get](https://en.wikipedia.org/wiki/Post/Redirect/Get)
 controller plugin for [laminas-mvc](https://docs.laminas.dev/laminas-mvc/)
