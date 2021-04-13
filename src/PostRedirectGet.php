@@ -64,12 +64,24 @@ class PostRedirectGet extends AbstractPlugin
     }
 
     /**
+     *
+     * @return string
+     */
+    public function getContainerIdentifier()
+    {
+        $controller = $this->getController();
+        $request    = $controller->getRequest();
+
+        return md5($request->getUri());
+    }
+
+    /**
      * @return Container
      */
     public function getSessionContainer()
     {
         if (! $this->sessionContainer) {
-            $this->sessionContainer = new Container('prg_post1');
+            $this->sessionContainer = new Container($this->getContainerIdentifier());
         }
         return $this->sessionContainer;
     }
