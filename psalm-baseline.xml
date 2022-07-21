@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
+  <file src="src/PostRedirectGet.php">
+    <DocblockTypeContradiction occurrences="1">
+      <code>null === $redirect</code>
+    </DocblockTypeContradiction>
+    <MixedArgument occurrences="2">
+      <code>$redirect</code>
+      <code>$redirect</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="4">
+      <code>$post</code>
+      <code>$redirect</code>
+      <code>$request</code>
+      <code>$routeMatch</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="2">
+      <code>Redirect</code>
+      <code>Response|array|Traversable|false</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="7">
+      <code>fromQuery</code>
+      <code>get</code>
+      <code>getMatchedRouteName</code>
+      <code>getPost</code>
+      <code>getRouteMatch</code>
+      <code>isPost</code>
+      <code>toArray</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="2">
+      <code>$controller-&gt;getPluginManager()-&gt;get('Redirect')</code>
+      <code>$post</code>
+    </MixedReturnStatement>
+    <PossiblyNullArgument occurrences="2">
+      <code>$controller</code>
+      <code>$redirect</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="4">
+      <code>getEvent</code>
+      <code>getRequest</code>
+      <code>getRequest</code>
+      <code>params</code>
+    </PossiblyNullReference>
+    <UndefinedInterfaceMethod occurrences="4">
+      <code>getEvent</code>
+      <code>getRequest</code>
+      <code>getRequest</code>
+      <code>params</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="test/PostRedirectGetTest.php">
+    <PossiblyInvalidMethodCall occurrences="7">
+      <code>getUri</code>
+      <code>getUri</code>
+      <code>getUri</code>
+      <code>getUri</code>
+      <code>getUri</code>
+      <code>getUri</code>
+      <code>getUri</code>
+    </PossiblyInvalidMethodCall>
+    <PossiblyNullArgument occurrences="2">
+      <code>$routeMatch</code>
+      <code>$routeMatch</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="2">
+      <code>setMatchedRouteName</code>
+      <code>setMatchedRouteName</code>
+    </PossiblyNullReference>
+    <UndefinedMethod occurrences="7">
+      <code>getUri</code>
+      <code>getUri</code>
+      <code>getUri</code>
+      <code>getUri</code>
+      <code>getUri</code>
+      <code>getUri</code>
+      <code>getUri</code>
+    </UndefinedMethod>
+    <UnusedVariable occurrences="2">
+      <code>$controller</code>
+      <code>$prgResultRoute</code>
+    </UnusedVariable>
+  </file>
+</files>

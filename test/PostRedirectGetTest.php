@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaminasTest\Mvc\Plugin\Prg;
 
 use Laminas\Http\Request;
+use Laminas\Http\Response;
 use Laminas\Mvc\ModuleRouteListener;
 use Laminas\Mvc\MvcEvent;
 use Laminas\Mvc\Plugin\Prg\PostRedirectGet;
@@ -17,34 +20,36 @@ use PHPUnit\Framework\TestCase;
 
 class PostRedirectGetTest extends TestCase
 {
-    public $controller;
-    public $event;
-    public $request;
-    public $response;
+    private TestAsset\SampleController $controller;
+    private MvcEvent $event;
+    private Request $request;
+    private ?Response $response = null;
+    private RouteMatch $routeMatch;
+    private PostRedirectGet $plugin;
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
-        $router = new TreeRouteStack;
+        $router = new TreeRouteStack();
         $router->addRoute('home', LiteralRoute::factory([
             'route'    => '/',
             'defaults' => [
                 'controller' => TestAsset\SampleController::class,
-            ]
+            ],
         ]));
 
         $router->addRoute('sub', SegmentRoute::factory([
-            'route' => '/foo/:param',
+            'route'    => '/foo/:param',
             'defaults' => [
-                'param' => 1
-            ]
+                'param' => 1,
+            ],
         ]));
 
         $router->addRoute('ctl', SegmentRoute::factory([
-            'route' => '/ctl/:controller',
+            'route'    => '/ctl/:controller',
             'defaults' => [
                 '__NAMESPACE__' => 'LaminasTest\Mvc\Plugin\Prg\TestAsset',
-                'controller' => 'sample'
-            ]
+                'controller'    => 'sample',
+            ],
         ]));
 
         $this->controller = new TestAsset\SampleController();
@@ -62,7 +67,7 @@ class PostRedirectGetTest extends TestCase
         $this->plugin->setController($this->controller);
     }
 
-    public function testReturnsFalseOnInitialGet()
+    public function testReturnsFalseOnInitialGet(): void
     {
         $this->controller->dispatch($this->request, $this->response);
 
@@ -70,44 +75,44 @@ class PostRedirectGetTest extends TestCase
         $this->assertFalse($plugin('home'));
     }
 
-    public function testRedirectsToUrlOnPost()
+    public function testRedirectsToUrlOnPost(): void
     {
         $this->request->setMethod('POST');
         $this->request->setPost(new Parameters([
-            'postval1' => 'value'
+            'postval1' => 'value',
         ]));
         $this->controller->dispatch($this->request, $this->response);
 
         $plugin       = $this->plugin;
         $prgResultUrl = $plugin('/test/getPage', true);
 
-        $this->assertInstanceOf('Laminas\Http\Response', $prgResultUrl);
+        $this->assertInstanceOf(Response::class, $prgResultUrl);
         $this->assertTrue($prgResultUrl->getHeaders()->has('Location'));
         $this->assertEquals('/test/getPage', $prgResultUrl->getHeaders()->get('Location')->getUri());
         $this->assertEquals(303, $prgResultUrl->getStatusCode());
     }
 
-    public function testRedirectsToRouteOnPost()
+    public function testRedirectsToRouteOnPost(): void
     {
         $this->request->setMethod('POST');
         $this->request->setPost(new Parameters([
-            'postval1' => 'value1'
+            'postval1' => 'value1',
         ]));
         $this->controller->dispatch($this->request, $this->response);
 
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin('home');
 
-        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf(Response::class, $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals('/', $prgResultRoute->getHeaders()->get('Location')->getUri());
         $this->assertEquals(303, $prgResultRoute->getStatusCode());
     }
 
-    public function testReturnsPostOnRedirectGet()
+    public function testReturnsPostOnRedirectGet(): void
     {
         $params = [
-            'postval1' => 'value1'
+            'postval1' => 'value1',
         ];
         $this->request->setMethod('POST');
         $this->request->setPost(new Parameters($params));
@@ -116,7 +121,7 @@ class PostRedirectGetTest extends TestCase
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin('home');
 
-        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf(Response::class, $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals('/', $prgResultRoute->getHeaders()->get('Location')->getUri());
         $this->assertEquals(303, $prgResultRoute->getStatusCode());
@@ -136,14 +141,14 @@ class PostRedirectGetTest extends TestCase
         $this->assertFalse($prgResult);
     }
 
-    public function testThrowsExceptionOnRouteWithoutRouter()
+    public function testThrowsExceptionOnRouteWithoutRouter(): void
     {
         $controller = $this->controller;
-        $controller = $controller->getEvent()->setRouter(new SimpleRouteStack);
+        $controller = $controller->getEvent()->setRouter(new SimpleRouteStack());
 
         $this->request->setMethod('POST');
         $this->request->setPost(new Parameters([
-            'postval1' => 'value'
+            'postval1' => 'value',
         ]));
         $this->controller->dispatch($this->request, $this->response);
 
@@ -152,57 +157,57 @@ class PostRedirectGetTest extends TestCase
         $prgResultRoute = $plugin('some/route');
     }
 
-    public function testNullRouteUsesMatchedRouteName()
+    public function testNullRouteUsesMatchedRouteName(): void
     {
         $this->controller->getEvent()->getRouteMatch()->setMatchedRouteName('home');
 
         $this->request->setMethod('POST');
         $this->request->setPost(new Parameters([
-            'postval1' => 'value1'
+            'postval1' => 'value1',
         ]));
         $this->controller->dispatch($this->request, $this->response);
 
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin();
 
-        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf(Response::class, $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals('/', $prgResultRoute->getHeaders()->get('Location')->getUri());
         $this->assertEquals(303, $prgResultRoute->getStatusCode());
     }
 
-    public function testReuseMatchedParameters()
+    public function testReuseMatchedParameters(): void
     {
         $this->controller->getEvent()->getRouteMatch()->setMatchedRouteName('sub');
 
         $this->request->setMethod('POST');
         $this->request->setPost(new Parameters([
-            'postval1' => 'value1'
+            'postval1' => 'value1',
         ]));
         $this->controller->dispatch($this->request, $this->response);
 
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin();
 
-        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf(Response::class, $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals('/foo/1', $prgResultRoute->getHeaders()->get('Location')->getUri());
         $this->assertEquals(303, $prgResultRoute->getStatusCode());
     }
 
-    public function testReuseMatchedParametersWithSegmentController()
+    public function testReuseMatchedParametersWithSegmentController(): void
     {
         $expects = '/ctl/sample';
         $this->request->setMethod('POST');
         $this->request->setUri($expects);
         $this->request->setPost(new Parameters([
-            'postval1' => 'value1'
+            'postval1' => 'value1',
         ]));
 
         $routeMatch = $this->event->getRouter()->match($this->request);
         $this->event->setRouteMatch($routeMatch);
 
-        $moduleRouteListener = new ModuleRouteListener;
+        $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->onRoute($this->event);
 
         $this->controller->dispatch($this->request, $this->response);
@@ -210,7 +215,7 @@ class PostRedirectGetTest extends TestCase
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin();
 
-        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf(Response::class, $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals(
             $expects,
@@ -220,7 +225,7 @@ class PostRedirectGetTest extends TestCase
         $this->assertEquals(303, $prgResultRoute->getStatusCode());
     }
 
-    public function testKeepUrlQueryParameters()
+    public function testKeepUrlQueryParameters(): void
     {
         $expects = '/ctl/sample';
         $this->request->setMethod('POST');
@@ -232,7 +237,7 @@ class PostRedirectGetTest extends TestCase
         $routeMatch = $this->event->getRouter()->match($this->request);
         $this->event->setRouteMatch($routeMatch);
 
-        $moduleRouteListener = new ModuleRouteListener;
+        $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->onRoute($this->event);
 
         $this->controller->dispatch($this->request, $this->response);
@@ -240,7 +245,7 @@ class PostRedirectGetTest extends TestCase
         $plugin         = $this->plugin;
         $prgResultRoute = $plugin();
 
-        $this->assertInstanceOf('Laminas\Http\Response', $prgResultRoute);
+        $this->assertInstanceOf(Response::class, $prgResultRoute);
         $this->assertTrue($prgResultRoute->getHeaders()->has('Location'));
         $this->assertEquals(
             $expects . '?id=123',
