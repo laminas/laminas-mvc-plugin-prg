@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
+<files psalm-version="5.16.0@2897ba636551a8cb61601cc26f6ccfbba6c36591">
+  <file src="src/Module.php">
+    <UnusedClass>
+      <code>Module</code>
+    </UnusedClass>
+  </file>
   <file src="src/PostRedirectGet.php">
-    <DocblockTypeContradiction occurrences="1">
+    <DocblockTypeContradiction>
       <code>null === $redirect</code>
     </DocblockTypeContradiction>
-    <MixedArgument occurrences="2">
+    <MixedArgument>
       <code>$redirect</code>
       <code>$redirect</code>
     </MixedArgument>
-    <MixedAssignment occurrences="4">
+    <MixedAssignment>
       <code>$post</code>
       <code>$redirect</code>
       <code>$request</code>
       <code>$routeMatch</code>
     </MixedAssignment>
-    <MixedInferredReturnType occurrences="2">
+    <MixedInferredReturnType>
       <code>Redirect</code>
       <code>Response|array|Traversable|false</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="7">
+    <MixedMethodCall>
       <code>fromQuery</code>
       <code>get</code>
       <code>getMatchedRouteName</code>
@@ -27,21 +32,24 @@
       <code>isPost</code>
       <code>toArray</code>
     </MixedMethodCall>
-    <MixedReturnStatement occurrences="2">
-      <code>$controller-&gt;getPluginManager()-&gt;get('Redirect')</code>
+    <MixedReturnStatement>
+      <code><![CDATA[$controller->getPluginManager()->get('Redirect')]]></code>
       <code>$post</code>
     </MixedReturnStatement>
-    <PossiblyNullArgument occurrences="2">
+    <PossiblyNullArgument>
       <code>$controller</code>
       <code>$redirect</code>
     </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="4">
+    <PossiblyNullReference>
       <code>getEvent</code>
       <code>getRequest</code>
       <code>getRequest</code>
       <code>params</code>
     </PossiblyNullReference>
-    <UndefinedInterfaceMethod occurrences="4">
+    <PossiblyUnusedMethod>
+      <code>setSessionContainer</code>
+    </PossiblyUnusedMethod>
+    <UndefinedInterfaceMethod>
       <code>getEvent</code>
       <code>getRequest</code>
       <code>getRequest</code>
@@ -49,7 +57,10 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="test/PostRedirectGetTest.php">
-    <PossiblyInvalidMethodCall occurrences="7">
+    <InvalidArgument>
+      <code>$router</code>
+    </InvalidArgument>
+    <PossiblyInvalidMethodCall>
       <code>getUri</code>
       <code>getUri</code>
       <code>getUri</code>
@@ -58,15 +69,15 @@
       <code>getUri</code>
       <code>getUri</code>
     </PossiblyInvalidMethodCall>
-    <PossiblyNullArgument occurrences="2">
+    <PossiblyNullArgument>
       <code>$routeMatch</code>
       <code>$routeMatch</code>
     </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="2">
+    <PossiblyNullReference>
       <code>setMatchedRouteName</code>
       <code>setMatchedRouteName</code>
     </PossiblyNullReference>
-    <UndefinedMethod occurrences="7">
+    <UndefinedMethod>
       <code>getUri</code>
       <code>getUri</code>
       <code>getUri</code>
@@ -75,7 +86,7 @@
       <code>getUri</code>
       <code>getUri</code>
     </UndefinedMethod>
-    <UnusedVariable occurrences="2">
+    <UnusedVariable>
       <code>$controller</code>
       <code>$prgResultRoute</code>
     </UnusedVariable>
