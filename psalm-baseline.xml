@@ -1,94 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.16.0@2897ba636551a8cb61601cc26f6ccfbba6c36591">
+<files psalm-version="6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">
   <file src="src/Module.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Module]]></code>
+    </ClassMustBeFinal>
     <UnusedClass>
-      <code>Module</code>
+      <code><![CDATA[Module]]></code>
     </UnusedClass>
   </file>
   <file src="src/PostRedirectGet.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[PostRedirectGet]]></code>
+    </ClassMustBeFinal>
     <DocblockTypeContradiction>
-      <code>null === $redirect</code>
+      <code><![CDATA[null === $redirect]]></code>
     </DocblockTypeContradiction>
     <MixedArgument>
-      <code>$redirect</code>
-      <code>$redirect</code>
+      <code><![CDATA[$redirect]]></code>
+      <code><![CDATA[$redirect]]></code>
     </MixedArgument>
     <MixedAssignment>
-      <code>$post</code>
-      <code>$redirect</code>
-      <code>$request</code>
-      <code>$routeMatch</code>
+      <code><![CDATA[$post]]></code>
+      <code><![CDATA[$redirect]]></code>
+      <code><![CDATA[$request]]></code>
+      <code><![CDATA[$routeMatch]]></code>
     </MixedAssignment>
-    <MixedInferredReturnType>
-      <code>Redirect</code>
-      <code>Response|array|Traversable|false</code>
-    </MixedInferredReturnType>
     <MixedMethodCall>
-      <code>fromQuery</code>
-      <code>get</code>
-      <code>getMatchedRouteName</code>
-      <code>getPost</code>
-      <code>getRouteMatch</code>
-      <code>isPost</code>
-      <code>toArray</code>
+      <code><![CDATA[fromQuery]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[getMatchedRouteName]]></code>
+      <code><![CDATA[getPost]]></code>
+      <code><![CDATA[getRouteMatch]]></code>
+      <code><![CDATA[isPost]]></code>
+      <code><![CDATA[toArray]]></code>
     </MixedMethodCall>
     <MixedReturnStatement>
       <code><![CDATA[$controller->getPluginManager()->get('Redirect')]]></code>
-      <code>$post</code>
+      <code><![CDATA[$post]]></code>
     </MixedReturnStatement>
     <PossiblyNullArgument>
-      <code>$controller</code>
-      <code>$redirect</code>
+      <code><![CDATA[$controller]]></code>
+      <code><![CDATA[$redirect]]></code>
     </PossiblyNullArgument>
     <PossiblyNullReference>
-      <code>getEvent</code>
-      <code>getRequest</code>
-      <code>getRequest</code>
-      <code>params</code>
+      <code><![CDATA[getEvent]]></code>
+      <code><![CDATA[getRequest]]></code>
+      <code><![CDATA[getRequest]]></code>
+      <code><![CDATA[params]]></code>
     </PossiblyNullReference>
     <PossiblyUnusedMethod>
-      <code>setSessionContainer</code>
+      <code><![CDATA[setSessionContainer]]></code>
     </PossiblyUnusedMethod>
     <UndefinedInterfaceMethod>
-      <code>getEvent</code>
-      <code>getRequest</code>
-      <code>getRequest</code>
-      <code>params</code>
+      <code><![CDATA[getEvent]]></code>
+      <code><![CDATA[getRequest]]></code>
+      <code><![CDATA[getRequest]]></code>
+      <code><![CDATA[params]]></code>
     </UndefinedInterfaceMethod>
+    <UndefinedMagicPropertyAssignment>
+      <code><![CDATA[$container->post]]></code>
+    </UndefinedMagicPropertyAssignment>
+    <UndefinedMagicPropertyFetch>
+      <code><![CDATA[$container->post]]></code>
+    </UndefinedMagicPropertyFetch>
   </file>
   <file src="test/PostRedirectGetTest.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[PostRedirectGetTest]]></code>
+    </ClassMustBeFinal>
     <InvalidArgument>
-      <code>$router</code>
+      <code><![CDATA[$router]]></code>
     </InvalidArgument>
+    <MissingOverrideAttribute>
+      <code><![CDATA[protected function setUp(): void]]></code>
+    </MissingOverrideAttribute>
     <PossiblyInvalidMethodCall>
-      <code>getUri</code>
-      <code>getUri</code>
-      <code>getUri</code>
-      <code>getUri</code>
-      <code>getUri</code>
-      <code>getUri</code>
-      <code>getUri</code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
     </PossiblyInvalidMethodCall>
     <PossiblyNullArgument>
-      <code>$routeMatch</code>
-      <code>$routeMatch</code>
+      <code><![CDATA[$routeMatch]]></code>
+      <code><![CDATA[$routeMatch]]></code>
     </PossiblyNullArgument>
     <PossiblyNullReference>
-      <code>setMatchedRouteName</code>
-      <code>setMatchedRouteName</code>
+      <code><![CDATA[setMatchedRouteName]]></code>
+      <code><![CDATA[setMatchedRouteName]]></code>
     </PossiblyNullReference>
     <UndefinedMethod>
-      <code>getUri</code>
-      <code>getUri</code>
-      <code>getUri</code>
-      <code>getUri</code>
-      <code>getUri</code>
-      <code>getUri</code>
-      <code>getUri</code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
+      <code><![CDATA[getUri]]></code>
     </UndefinedMethod>
     <UnusedVariable>
-      <code>$controller</code>
-      <code>$prgResultRoute</code>
+      <code><![CDATA[$controller]]></code>
+      <code><![CDATA[$prgResultRoute]]></code>
     </UnusedVariable>
+  </file>
+  <file src="test/TestAsset/SampleController.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[SampleController]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function notFoundAction(): void]]></code>
+    </MissingOverrideAttribute>
   </file>
 </files>
